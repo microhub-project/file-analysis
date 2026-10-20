@@ -83,7 +83,7 @@ def capture():
                 if(bytes_upload < 0.5):
                     bytes_upload = 0.5
 
-                valor = round((random.uniform(7.5, 13.7) + (277.0 * esforco)), 2)
+                valor = round((random.uniform(7.5, -13.7) + (255.0 * esforco)), 2)
 
                 bytes_download = round((1.0 + esforco*200)+ variacao + random.uniform(5.3, -2.7), 2)
 

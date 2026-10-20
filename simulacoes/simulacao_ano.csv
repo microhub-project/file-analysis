@@ -1,4 +1,4 @@
-nome_instancia;nome_microsservico;porcentagem_cpu;frequencia_cpu;porcentagem_ram;porcentagem_mem_swap;qtd_processos;qtd_zumbis;velocidade_upload;velocidade_download;disco;data_hora;valor_estimado
+nome_instancia;nome_microsservico;porcentagem_cpu;frequencia_cpu;porcentagem_ram;porcentagem_mem_swap;qtd_processos;qtd_zumbis;bytes_upload;bytes_download;disco;data_hora;valor_estimado
 instancia_01;microservico_01;73.06;2.98;76.81;22.89;351.41327166628434;1;35.3;164.3;198.23;2026-01-01 8:17:10;56.8
 instancia_01;microservico_01;74.27;3.24;75.92;21.57;348.6154758240225;0;39.62;157.98;198.12;2026-01-02 17:23:26;55.98
 instancia_01;microservico_01;69.55;1.8;77.95;19.2;342.1480125970265;0;38.91;156.14;198.04;2026-01-03 5:38:48;59.2

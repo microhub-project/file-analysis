@@ -3,12 +3,12 @@ import random
 import time
 
 servidores = [
-    {"instancia":"instancia_01","microservico":"microservico_01"},
-    {"instancia":"instancia_01","microservico":"microservico_02"},
-    {"instancia":"instancia_02","microservico":"microservico_03"},
-    {"instancia":"instancia_02","microservico":"microservico_04"},
-    {"instancia":"instancia_03","microservico":"microservico_05"},
-    {"instancia":"instancia_03","microservico":"microservico_06"}
+    {"instancia":"instancia_01","microsservico":"microsservico_01"},
+    {"instancia":"instancia_01","microsservico":"microsservico_02"},
+    {"instancia":"instancia_02","microsservico":"microsservico_03"},
+    {"instancia":"instancia_02","microsservico":"microsservico_04"},
+    {"instancia":"instancia_03","microsservico":"microsservico_05"},
+    {"instancia":"instancia_03","microsservico":"microsservico_06"}
 ]
 
 def capture():
@@ -18,15 +18,15 @@ def capture():
         writer = csv.writer(csvfile, delimiter=';')
         writer.writerow([
             'nome_instancia',
-            'nome_microservico',
+            'nome_microsservico',
             'porcentagem_cpu',
             'frequencia_cpu',
             'porcentagem_ram',
             'porcentagem_mem_swap',
             'qtd_processos',
             'qtd_zumbis',
-            'velocidade_upload',
-            'velocidade_download',
+            'bytes_upload',
+            'bytes_download',
             'disco',
             'data_hora',
             'valor_estimado'
@@ -34,7 +34,7 @@ def capture():
     for j in servidores:
 
         nome_instancia = j["instancia"]
-        nome_microservico = j["microservico"]
+        nome_microsservico = j["microsservico"]
 
         with open('yearly-data.csv', 'r', encoding='utf-8') as arquivo_lido:
             lido = csv.DictReader(arquivo_lido, delimiter=';')
@@ -56,7 +56,7 @@ def capture():
 
                 variacao = random.uniform(-2.0,2.0)
 
-                porcentagem_cpu = round((10.0 + (esforco * 80.0)) + variacao + round(random.uniform(14.3, 7.7),1), 2)
+                porcentagem_cpu = round((10.0 + (esforco * 80.0)) + variacao + round(random.uniform(5.3, -2.7),1), 2)
                 if(porcentagem_cpu > 99.0):
                     porcentagem_cpu = 99.0
         
@@ -64,7 +64,7 @@ def capture():
                 if(frequencia_cpu < 1.8):
                     frequencia_cpu = 1.8
      
-                porcentagem_ram = round((30 + (esforco * 60)) + variacao + round(random.uniform(17,12),1), 2)
+                porcentagem_ram = round((30 + (esforco * 60)) + variacao + round(random.uniform(5.3, -2.7),1), 2)
                 if(porcentagem_ram > 90):
                     porcentagem_ram = 90
                 if(porcentagem_ram < 30):
@@ -79,30 +79,31 @@ def capture():
                 else:
                     qtd_zumbis = 0
 
-                velocidade_upload = round(((0.5 + esforco*45)+ variacao + (random.uniform(-3,-13.1))), 2)
-                if(velocidade_upload < 0.5):
-                    velocidade_upload = 0.5
+                bytes_upload = round(((0.5 + esforco*45)+ variacao + (random.uniform(5.3, -2.7))), 2)
+                if(bytes_upload < 0.5):
+                    bytes_upload = 0.5
 
-                valor = round((7.0 + (61.0 * esforco)), 2)
+                valor = round((random.uniform(7.5, 13.7) + (277.0 * esforco)), 2)
 
-                velocidade_download = round((1.0 + esforco*200)+ variacao + random.uniform(1.6,-4.2), 2)
-                if(velocidade_download < 1.0):
-                    velocidade_download = 1.0
+                bytes_download = round((1.0 + esforco*200)+ variacao + random.uniform(5.3, -2.7), 2)
+
+                if(bytes_download < 1.0):
+                    bytes_download = 1.0
 
                 disco = round((disco_inicial - (dia * 0.15)) - (esforco * 2.0), 2)
                 dia+=1
       
                 dados_dia = [
                     nome_instancia,
-                    nome_microservico,
+                    nome_microsservico,
                     porcentagem_cpu,
                     frequencia_cpu,
                     porcentagem_ram,
                     porcentagem_mem_swap,
                     qtd_processos,
                     qtd_zumbis,
-                    velocidade_upload,
-                    velocidade_download,
+                    bytes_upload,
+                    bytes_download,
                     disco,
                     data_hora,
                     valor
@@ -110,13 +111,13 @@ def capture():
 
                 exhibit(dados_dia)
                 store(dados_dia)
-                time.sleep(1)
+                time.sleep(0.1)
         
 
 
 def exhibit(data):
   line_instancia = f'Nome da instância: {data[0]}'
-  line_micro_servico = f'Nome microservico: {data[1]}'
+  line_micro_servico = f'Nome microsservico: {data[1]}'
   line_cpu_percent = f'Uso atual da CPU: {data[2]}%'
   line_cpu_frequency = f'Frequência atual da CPU: {data[3]} GHz'
   line_ram_percent = f'Uso atual de memória RAM: {data[4]}%'
